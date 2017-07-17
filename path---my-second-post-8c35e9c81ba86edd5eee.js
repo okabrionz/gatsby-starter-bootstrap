@@ -1,2 +1,0 @@
-webpackJsonp([6],{"./node_modules/json-loader/index.js!./.cache/json/my-second-post.json":function(o,n){o.exports={pathContext:{path:"/my-second-post/"}}}});
-//# sourceMappingURL=path---my-second-post-8c35e9c81ba86edd5eee.js.map

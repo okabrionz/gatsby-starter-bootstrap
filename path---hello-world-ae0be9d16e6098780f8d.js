@@ -1,2 +1,0 @@
-webpackJsonp([9],{"./node_modules/json-loader/index.js!./.cache/json/hello-world.json":function(o,e){o.exports={pathContext:{path:"/hello-world/"}}}});
-//# sourceMappingURL=path---hello-world-ae0be9d16e6098780f8d.js.map
