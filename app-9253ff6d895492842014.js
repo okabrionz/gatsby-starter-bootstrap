@@ -24,9 +24,12 @@ webpackJsonp([0xd2a57dc1d8840000], {
           return n
         }
       })
-      return (s = s.filter(function(e) {
-        return 'undefined' != typeof e
-      })), s.length > 0 ? s : t ? [t] : []
+      return (
+        (s = s.filter(function(e) {
+          return 'undefined' != typeof e
+        })),
+        s.length > 0 ? s : t ? [t] : []
+      )
     }
   },
   './.cache/async-requires.js': function(e, o, t) {
@@ -44,30 +47,32 @@ webpackJsonp([0xd2a57dc1d8840000], {
       'page-component---src-pages-profile-index-jsx': t(
         './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=page-component---src-pages-profile-index-jsx!./src/pages/profile/index.jsx'
       ),
-    }), (o.json = {
-      'offline-plugin-app-shell-fallback.json': t(
-        './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---offline-plugin-app-shell-fallback!./.cache/json/offline-plugin-app-shell-fallback.json'
-      ),
-      'hello-world.json': t(
-        './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---hello-world!./.cache/json/hello-world.json'
-      ),
-      'hi-folks.json': t(
-        './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---hi-folks!./.cache/json/hi-folks.json'
-      ),
-      'my-second-post.json': t(
-        './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---my-second-post!./.cache/json/my-second-post.json'
-      ),
-      'index.json': t(
-        './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---index!./.cache/json/index.json'
-      ),
-      'profile.json': t(
-        './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---profile!./.cache/json/profile.json'
-      ),
-    }), (o.layouts = {
-      index: t(
-        './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=layout-component---index!./src/layouts/index.js'
-      ),
-    })
+    }),
+      (o.json = {
+        'offline-plugin-app-shell-fallback.json': t(
+          './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---offline-plugin-app-shell-fallback!./.cache/json/offline-plugin-app-shell-fallback.json'
+        ),
+        'hello-world.json': t(
+          './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---hello-world!./.cache/json/hello-world.json'
+        ),
+        'hi-folks.json': t(
+          './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---hi-folks!./.cache/json/hi-folks.json'
+        ),
+        'my-second-post.json': t(
+          './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---my-second-post!./.cache/json/my-second-post.json'
+        ),
+        'index.json': t(
+          './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---index!./.cache/json/index.json'
+        ),
+        'profile.json': t(
+          './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---profile!./.cache/json/profile.json'
+        ),
+      }),
+      (o.layouts = {
+        index: t(
+          './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=layout-component---index!./src/layouts/index.js'
+        ),
+      })
   },
   './.cache/component-renderer.js': function(e, o, t) {
     'use strict'
@@ -102,73 +107,80 @@ webpackJsonp([0xd2a57dc1d8840000], {
             this,
             (o.__proto__ || (0, l.default)(o)).call(this)
           )
-          return (t.state = {
-            location: e.location,
-            pageResources: y.default.getResourcesForPathname(
-              e.location.pathname
-            ),
-          }), t
+          return (
+            (t.state = {
+              location: e.location,
+              pageResources: y.default.getResourcesForPathname(
+                e.location.pathname
+              ),
+            }),
+            t
+          )
         }
-        return (0, b.default)(o, e), (0, c.default)(o, [
-          {
-            key: 'componentWillReceiveProps',
-            value: function(e) {
-              var o = this
-              if (this.state.location.pathname !== e.location.pathname) {
-                var t = y.default.getResourcesForPathname(e.location.pathname)
-                t
-                  ? this.setState({ location: e.location, pageResources: t })
-                  : y.default.getResourcesForPathname(
-                      e.location.pathname,
-                      function(t) {
-                        o.setState({ location: e.location, pageResources: t })
-                      }
+        return (
+          (0, b.default)(o, e),
+          (0, c.default)(o, [
+            {
+              key: 'componentWillReceiveProps',
+              value: function(e) {
+                var o = this
+                if (this.state.location.pathname !== e.location.pathname) {
+                  var t = y.default.getResourcesForPathname(e.location.pathname)
+                  t
+                    ? this.setState({ location: e.location, pageResources: t })
+                    : y.default.getResourcesForPathname(
+                        e.location.pathname,
+                        function(t) {
+                          o.setState({ location: e.location, pageResources: t })
+                        }
+                      )
+                }
+              },
+            },
+            {
+              key: 'componentDidMount',
+              value: function() {
+                var e = this
+                x.default.on('onPostLoadPageResources', function(o) {
+                  o.page.path ===
+                    y.default.getPage(e.state.location.pathname).path &&
+                    e.setState({ pageResources: o.pageResources })
+                })
+              },
+            },
+            {
+              key: 'shouldComponentUpdate',
+              value: function(e, o) {
+                return (
+                  this.state.pageResources.component !==
+                    o.pageResources.component ||
+                  (this.state.pageResources.json !== o.pageResources.json ||
+                    !(
+                      this.state.location.key === o.location.key ||
+                      !o.pageResources.page ||
+                      !o.pageResources.page.matchPath
+                    ))
+                )
+              },
+            },
+            {
+              key: 'render',
+              value: function() {
+                return this.state.pageResources
+                  ? (0, f.createElement)(
+                      this.state.pageResources.component,
+                      (0, a.default)(
+                        { key: this.props.location.pathname },
+                        this.props,
+                        this.state.pageResources.json
+                      )
                     )
-              }
+                  : null
+              },
             },
-          },
-          {
-            key: 'componentDidMount',
-            value: function() {
-              var e = this
-              x.default.on('onPostLoadPageResources', function(o) {
-                o.page.path ===
-                  y.default.getPage(e.state.location.pathname).path &&
-                  e.setState({ pageResources: o.pageResources })
-              })
-            },
-          },
-          {
-            key: 'shouldComponentUpdate',
-            value: function(e, o) {
-              return (
-                this.state.pageResources.component !==
-                  o.pageResources.component ||
-                (this.state.pageResources.json !== o.pageResources.json ||
-                  !(
-                    this.state.location.key === o.location.key ||
-                    !o.pageResources.page ||
-                    !o.pageResources.page.matchPath
-                  ))
-              )
-            },
-          },
-          {
-            key: 'render',
-            value: function() {
-              return this.state.pageResources
-                ? (0, f.createElement)(
-                    this.state.pageResources.component,
-                    (0, a.default)(
-                      { key: this.props.location.pathname },
-                      this.props,
-                      this.state.pageResources.json
-                    )
-                  )
-                : null
-            },
-          },
-        ]), o
+          ]),
+          o
+        )
       })(h.default.Component)
     o.default = w
   },
@@ -192,23 +204,28 @@ webpackJsonp([0xd2a57dc1d8840000], {
       return function(t) {
         var a = t.slice(o.length)
         if (
-          (
-            a.split('#').length > 1 && (a = a.split('#').slice(0, -1).join('')),
-            s[a]
-          )
+          (a.split('#').length > 1 &&
+            (a = a
+              .split('#')
+              .slice(0, -1)
+              .join('')),
+          s[a])
         )
           return s[a]
         var r = void 0
-        return e.some(function(e) {
-          if (e.matchPath) {
-            if (
-              (0, n.matchPath)(a, { path: e.path }) ||
-              (0, n.matchPath)(a, { path: e.matchPath })
-            )
-              return (r = e), (s[a] = e), !0
-          } else if ((0, n.matchPath)(a, { path: e.path, exact: !0 })) return (r = e), (s[a] = e), !0
-          return !1
-        }), r
+        return (
+          e.some(function(e) {
+            if (e.matchPath) {
+              if (
+                (0, n.matchPath)(a, { path: e.path }) ||
+                (0, n.matchPath)(a, { path: e.matchPath })
+              )
+                return (r = e), (s[a] = e), !0
+            } else if ((0, n.matchPath)(a, { path: e.path, exact: !0 })) return (r = e), (s[a] = e), !0
+            return !1
+          }),
+          r
+        )
       }
     }
   },
@@ -217,114 +234,108 @@ webpackJsonp([0xd2a57dc1d8840000], {
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x834755aae49e4800, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/json-loader/index.js!./.cache/json/hello-world.json'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x834755aae49e4800, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/json-loader/index.js!./.cache/json/hello-world.json'
+                )
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---hi-folks!./.cache/json/hi-folks.json': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x7107db290105d000, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/json-loader/index.js!./.cache/json/hi-folks.json'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x7107db290105d000, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/json-loader/index.js!./.cache/json/hi-folks.json'
+                )
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---index!./.cache/json/index.json': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x81b8806e42603000, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/json-loader/index.js!./.cache/json/index.json'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x81b8806e42603000, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/json-loader/index.js!./.cache/json/index.json'
+                )
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---my-second-post!./.cache/json/my-second-post.json': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x550ed3da8eb4900, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/json-loader/index.js!./.cache/json/my-second-post.json'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x550ed3da8eb4900, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/json-loader/index.js!./.cache/json/my-second-post.json'
+                )
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---offline-plugin-app-shell-fallback!./.cache/json/offline-plugin-app-shell-fallback.json': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0xbf4c176e203a5800, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/json-loader/index.js!./.cache/json/offline-plugin-app-shell-fallback.json'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0xbf4c176e203a5800, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/json-loader/index.js!./.cache/json/offline-plugin-app-shell-fallback.json'
+                )
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=path---profile!./.cache/json/profile.json': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x38d1ef0181ddfa00, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/json-loader/index.js!./.cache/json/profile.json'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x38d1ef0181ddfa00, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/json-loader/index.js!./.cache/json/profile.json'
+                )
+              })
+        })
       })
-    })
   },
   './.cache/loader.js': function(e, o, t) {
     ;(function(o) {
@@ -362,14 +373,17 @@ webpackJsonp([0xd2a57dc1d8840000], {
           k(e, function() {
             ;(y = y.filter(function(o) {
               return o !== e
-            })), w.onResourcedFinished(e)
+            })),
+              w.onResourcedFinished(e)
           })
         },
-      })), u.default.on('onPreLoadPageResources', function(e) {
-        w.onPreLoadPageResources(e)
-      }), u.default.on('onPostLoadPageResources', function(e) {
-        w.onPostLoadPageResources(e)
-      })
+      })),
+        u.default.on('onPreLoadPageResources', function(e) {
+          w.onPreLoadPageResources(e)
+        }),
+        u.default.on('onPostLoadPageResources', function(e) {
+          w.onPostLoadPageResources(e)
+        })
       var R = function(e, o) {
           return _[e] > _[o] ? 1 : _[e] < _[o] ? -1 : 0
         },
@@ -432,26 +446,30 @@ webpackJsonp([0xd2a57dc1d8840000], {
             )
               return !1
             var o = 1 / U
-            ;(U += 1), j[e] ? (j[e] += 1) : (j[e] = 1), E.has(e) ||
-              h.unshift(e), h.sort(D)
+            ;(U += 1),
+              j[e] ? (j[e] += 1) : (j[e] = 1),
+              E.has(e) || h.unshift(e),
+              h.sort(D)
             var t = d(e)
-            return t.jsonName &&
-              (
-                _[t.jsonName]
+            return (
+              t.jsonName &&
+                (_[t.jsonName]
                   ? (_[t.jsonName] += 1 + o)
                   : (_[t.jsonName] = 1 + o),
                 y.indexOf(t.jsonName) !== -1 ||
                   g[t.jsonName] ||
-                  y.unshift(t.jsonName)
-              ), t.componentChunkName &&
-              (
-                _[t.componentChunkName]
+                  y.unshift(t.jsonName)),
+              t.componentChunkName &&
+                (_[t.componentChunkName]
                   ? (_[t.componentChunkName] += 1 + o)
                   : (_[t.componentChunkName] = 1 + o),
                 y.indexOf(t.componentChunkName) !== -1 ||
                   g[t.jsonName] ||
-                  y.unshift(t.componentChunkName)
-              ), y.sort(R), w.onNewResourcesAdded(), !0
+                  y.unshift(t.componentChunkName)),
+              y.sort(R),
+              w.onNewResourcesAdded(),
+              !0
+            )
           },
           getResources: function() {
             return { resourcesArray: y, resourcesCount: _ }
@@ -501,16 +519,22 @@ webpackJsonp([0xd2a57dc1d8840000], {
                     }
                   }
                   window.location.reload()
-                })), (v = !1)
+                })),
+              (v = !1)
             var n = d(e)
             if (!n)
               return void console.log('A page wasn\'t found for "' + e + '"')
             if (((e = n.path), m[e]))
-              return o.nextTick(function() {
-                t(
-                  m[e]
-                ), u.default.emit('onPostLoadPageResources', { page: n, pageResources: m[e] })
-              }), m[e]
+              return (
+                o.nextTick(function() {
+                  t(m[e]),
+                    u.default.emit('onPostLoadPageResources', {
+                      page: n,
+                      pageResources: m[e],
+                    })
+                }),
+                m[e]
+              )
             u.default.emit('onPreLoadPageResources', { path: e })
             var s = void 0,
               r = void 0,
@@ -518,23 +542,28 @@ webpackJsonp([0xd2a57dc1d8840000], {
                 if (s && r) {
                   m[e] = { component: s, json: r, page: n }
                   var o = { component: s, json: r, page: n }
-                  t(o), u.default.emit('onPostLoadPageResources', {
-                    page: n,
-                    pageResources: o,
-                  })
+                  t(o),
+                    u.default.emit('onPostLoadPageResources', {
+                      page: n,
+                      pageResources: o,
+                    })
                 }
               }
-            return P(n.componentChunkName, function(e, o) {
-              e &&
-                console.log(
-                  'Loading the component for ' + n.path + ' failed'
-                ), (s = o), l()
-            }), void P(n.jsonName, function(e, o) {
-              e &&
-                console.log(
-                  'Loading the JSON for ' + n.path + ' failed'
-                ), (r = o), l()
-            })
+            return (
+              P(n.componentChunkName, function(e, o) {
+                e &&
+                  console.log(
+                    'Loading the component for ' + n.path + ' failed'
+                  ),
+                  (s = o),
+                  l()
+              }),
+              void P(n.jsonName, function(e, o) {
+                e && console.log('Loading the JSON for ' + n.path + ' failed'),
+                  (r = o),
+                  l()
+              })
+            )
           },
           peek: function(e) {
             return h.slice(-1)[0]
@@ -645,12 +674,10 @@ webpackJsonp([0xd2a57dc1d8840000], {
     }
     function s(e) {
       window.___history ||
-        (
-          (window.___history = e),
-          e.listen(function(e, o) {
-            ;(0, u.default)('onRouteUpdate', { location: e, action: o })
-          })
-        )
+        ((window.___history = e),
+        e.listen(function(e, o) {
+          ;(0, u.default)('onRouteUpdate', { location: e, action: o })
+        }))
     }
     function a(e, o) {
       var t = o.location.pathname,
@@ -687,28 +714,27 @@ webpackJsonp([0xd2a57dc1d8840000], {
       D = n(R),
       k = t('./.cache/loader.js'),
       P = n(k)
-    ;(window.___emitter = y.default), P.default.addPagesArray(
-      x.default
-    ), P.default.addProdRequires(D.default), (window.asyncRequires =
-      D.default), (window.___loader = P.default), (window.matchPath =
-      g.matchPath), (0, u.default)('onClientEntry'), (0, u.default)(
-      'registerServiceWorker'
-    ).length > 0 && t('./.cache/register-service-worker.js')
+    ;(window.___emitter = y.default),
+      P.default.addPagesArray(x.default),
+      P.default.addProdRequires(D.default),
+      (window.asyncRequires = D.default),
+      (window.___loader = P.default),
+      (window.matchPath = g.matchPath),
+      (0, u.default)('onClientEntry'),
+      (0, u.default)('registerServiceWorker').length > 0 &&
+        t('./.cache/register-service-worker.js')
     var U = function(e) {
       function o(n) {
         n.page.path === P.default.getPage(e).path &&
-          (
-            y.default.off('onPostLoadPageResources', o),
-            clearTimeout(t),
-            window.___history.push(e)
-          )
+          (y.default.off('onPostLoadPageResources', o),
+          clearTimeout(t),
+          window.___history.push(e))
       }
       if (window.location.pathname !== e) {
         var t = setTimeout(function() {
-          y.default.off(
-            'onPostLoadPageResources',
-            o
-          ), y.default.emit('onDelayedLoadPageResources', { pathname: e }), window.___history.push(e)
+          y.default.off('onPostLoadPageResources', o),
+            y.default.emit('onDelayedLoadPageResources', { pathname: e }),
+            window.___history.push(e)
         }, 1e3)
         P.default.getResourcesForPathname(e)
           ? (clearTimeout(t), window.___history.push(e))
@@ -781,36 +807,33 @@ webpackJsonp([0xd2a57dc1d8840000], {
     var s = t('./.cache/emitter.js'),
       a = n(s),
       r = '/'
-    ;(r = '/gatsby-starter-bootstrap/'), 'serviceWorker' in navigator &&
-      navigator.serviceWorker
-        .register(r + 'sw.js')
-        .then(function(e) {
-          e.addEventListener('updatefound', function() {
-            var o = e.installing
-            console.log(
-              'installingWorker',
-              o
-            ), o.addEventListener('statechange', function() {
-              switch (o.state) {
-                case 'installed':
-                  navigator.serviceWorker.controller
-                    ? window.location.reload()
-                    : (
-                        console.log('Content is now available offline!'),
-                        a.default.emit('sw:installed')
+    ;(r = '/gatsby-starter-bootstrap/'),
+      'serviceWorker' in navigator &&
+        navigator.serviceWorker
+          .register(r + 'sw.js')
+          .then(function(e) {
+            e.addEventListener('updatefound', function() {
+              var o = e.installing
+              console.log('installingWorker', o),
+                o.addEventListener('statechange', function() {
+                  switch (o.state) {
+                    case 'installed':
+                      navigator.serviceWorker.controller
+                        ? window.location.reload()
+                        : (console.log('Content is now available offline!'),
+                          a.default.emit('sw:installed'))
+                      break
+                    case 'redundant':
+                      console.error(
+                        'The installing service worker became redundant.'
                       )
-                  break
-                case 'redundant':
-                  console.error(
-                    'The installing service worker became redundant.'
-                  )
-              }
+                  }
+                })
             })
           })
-        })
-        .catch(function(e) {
-          console.error('Error during service worker registration:', e)
-        })
+          .catch(function(e) {
+            console.error('Error during service worker registration:', e)
+          })
   },
   './node_modules/gatsby-plugin-google-analytics/gatsby-browser.js': function(
     e,
@@ -829,17 +852,16 @@ webpackJsonp([0xd2a57dc1d8840000], {
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x737bb7e987a92800, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t('./node_modules/gatsby-plugin-offline/app-shell.js')
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x737bb7e987a92800, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t('./node_modules/gatsby-plugin-offline/app-shell.js')
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby-plugin-offline/gatsby-browser.js': function(e, o) {
     'use strict'
@@ -888,54 +910,50 @@ webpackJsonp([0xd2a57dc1d8840000], {
           }
         return !a && o && o[n]
           ? void u(!0)
-          : (
-              s(n, function() {
+          : (s(n, function() {
+              l ||
+                ((l = !0),
+                i
+                  ? setTimeout(function() {
+                      u()
+                    })
+                  : u())
+            }),
+            void (
+              l ||
+              ((i = !1),
+              e(function() {
                 l ||
-                  (
-                    (l = !0),
-                    i
-                      ? setTimeout(function() {
-                          u()
-                        })
-                      : u()
-                  )
-              }),
-              void (
-                l ||
-                (
-                  (i = !1),
-                  e(function() {
-                    l ||
-                      (
-                        (l = !0),
-                        a ? (a[n] = void 0) : (o || (o = {}), (o[n] = !0)),
-                        u(!0)
-                      )
-                  })
-                )
-              )
-            )
+                  ((l = !0),
+                  a ? (a[n] = void 0) : (o || (o = {}), (o[n] = !0)),
+                  u(!0))
+              }))
+            ))
       }
     }
     n()
   },
   './node_modules/mitt/dist/mitt.js': function(e, o) {
     function t(e) {
-      return (e = e || Object.create(null)), {
-        on: function(o, t) {
-          ;(e[o] || (e[o] = [])).push(t)
-        },
-        off: function(o, t) {
-          e[o] && e[o].splice(e[o].indexOf(t) >>> 0, 1)
-        },
-        emit: function(o, t) {
-          ;(e[o] || []).map(function(e) {
-            e(t)
-          }), (e['*'] || []).map(function(e) {
-            e(o, t)
-          })
-        },
-      }
+      return (
+        (e = e || Object.create(null)),
+        {
+          on: function(o, t) {
+            ;(e[o] || (e[o] = [])).push(t)
+          },
+          off: function(o, t) {
+            e[o] && e[o].splice(e[o].indexOf(t) >>> 0, 1)
+          },
+          emit: function(o, t) {
+            ;(e[o] || []).map(function(e) {
+              e(t)
+            }),
+              (e['*'] || []).map(function(e) {
+                e(o, t)
+              })
+          },
+        }
+      )
     }
     e.exports = t
   },
@@ -1018,99 +1036,112 @@ webpackJsonp([0xd2a57dc1d8840000], {
       if (arguments.length > 1)
         for (var t = 1; t < arguments.length; t++) o[t - 1] = arguments[t]
       g.push(new i(e, o)), 1 !== g.length || b || s(l)
-    }), (i.prototype.run = function() {
-      this.fun.apply(null, this.array)
-    }), (p.title =
-      'browser'), (p.browser = !0), (p.env = {}), (p.argv = []), (p.version =
-      ''), (p.versions = {}), (p.on = u), (p.addListener = u), (p.once = u), (p.off = u), (p.removeListener = u), (p.removeAllListeners = u), (p.emit = u), (p.prependListener = u), (p.prependOnceListener = u), (p.listeners = function(
-      e
-    ) {
-      return []
-    }), (p.binding = function(e) {
-      throw new Error('process.binding is not supported')
-    }), (p.cwd = function() {
-      return '/'
-    }), (p.chdir = function(e) {
-      throw new Error('process.chdir is not supported')
-    }), (p.umask = function() {
-      return 0
-    })
+    }),
+      (i.prototype.run = function() {
+        this.fun.apply(null, this.array)
+      }),
+      (p.title = 'browser'),
+      (p.browser = !0),
+      (p.env = {}),
+      (p.argv = []),
+      (p.version = ''),
+      (p.versions = {}),
+      (p.on = u),
+      (p.addListener = u),
+      (p.once = u),
+      (p.off = u),
+      (p.removeListener = u),
+      (p.removeAllListeners = u),
+      (p.emit = u),
+      (p.prependListener = u),
+      (p.prependOnceListener = u),
+      (p.listeners = function(e) {
+        return []
+      }),
+      (p.binding = function(e) {
+        throw new Error('process.binding is not supported')
+      }),
+      (p.cwd = function() {
+        return '/'
+      }),
+      (p.chdir = function(e) {
+        throw new Error('process.chdir is not supported')
+      }),
+      (p.umask = function() {
+        return 0
+      })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=layout-component---index!./src/layouts/index.js': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0xef47e37750d80000, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/babel-loader/lib/index.js?{"presets":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-es2015/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-env/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js"],"plugins":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/gatsby/dist/utils/babel-plugin-extract-graphql.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-transform-object-assign/lib/index.js"],"cacheDirectory":true}!./src/layouts/index.js'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0xef47e37750d80000, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/babel-loader/lib/index.js?{"presets":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-es2015/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-env/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js"],"plugins":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/gatsby/dist/utils/babel-plugin-extract-graphql.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-transform-object-assign/lib/index.js"],"cacheDirectory":true}!./src/layouts/index.js'
+                )
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=page-component---src-pages-index-js!./src/pages/index.js': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x37beb808d31a9600, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/babel-loader/lib/index.js?{"presets":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-es2015/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-env/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js"],"plugins":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/gatsby/dist/utils/babel-plugin-extract-graphql.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-transform-object-assign/lib/index.js"],"cacheDirectory":true}!./src/pages/index.js'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x37beb808d31a9600, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/babel-loader/lib/index.js?{"presets":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-es2015/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-env/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js"],"plugins":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/gatsby/dist/utils/babel-plugin-extract-graphql.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-transform-object-assign/lib/index.js"],"cacheDirectory":true}!./src/pages/index.js'
+                )
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=page-component---src-pages-profile-index-jsx!./src/pages/profile/index.jsx': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x9aa659cb4003b800, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/babel-loader/lib/index.js?{"presets":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-es2015/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-env/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js"],"plugins":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/gatsby/dist/utils/babel-plugin-extract-graphql.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-transform-object-assign/lib/index.js"],"cacheDirectory":true}!./src/pages/profile/index.jsx'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x9aa659cb4003b800, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/babel-loader/lib/index.js?{"presets":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-es2015/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-env/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js"],"plugins":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/gatsby/dist/utils/babel-plugin-extract-graphql.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-transform-object-assign/lib/index.js"],"cacheDirectory":true}!./src/pages/profile/index.jsx'
+                )
+              })
+        })
       })
-    })
   },
   './node_modules/gatsby/dist/loaders/gatsby-module-loader/index.js?name=page-component---src-templates-blog-post-js!./src/templates/blog-post.js': function(
     e,
     o,
     t
   ) {
-    t(
-      './node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'
-    ), (e.exports = function(e) {
-      return t.e(0x4d422fad1a8d8000, function(o, n) {
-        n
-          ? (console.log('bundle loading error', n), e(!0))
-          : e(null, function() {
-              return t(
-                './node_modules/babel-loader/lib/index.js?{"presets":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-es2015/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-env/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js"],"plugins":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/gatsby/dist/utils/babel-plugin-extract-graphql.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-transform-object-assign/lib/index.js"],"cacheDirectory":true}!./src/templates/blog-post.js'
-              )
-            })
+    t('./node_modules/gatsby/dist/loaders/gatsby-module-loader/patch.js'),
+      (e.exports = function(e) {
+        return t.e(0x4d422fad1a8d8000, function(o, n) {
+          n
+            ? (console.log('bundle loading error', n), e(!0))
+            : e(null, function() {
+                return t(
+                  './node_modules/babel-loader/lib/index.js?{"presets":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-es2015/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-env/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-stage-0/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-preset-react/lib/index.js"],"plugins":["/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/gatsby/dist/utils/babel-plugin-extract-graphql.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-add-module-exports/lib/index.js","/Users/iwa/Documents/gatsby-starter-bootstrap/node_modules/babel-plugin-transform-object-assign/lib/index.js"],"cacheDirectory":true}!./src/templates/blog-post.js'
+                )
+              })
+        })
       })
-    })
   },
 })
 //# sourceMappingURL=app-9253ff6d895492842014.js.map
